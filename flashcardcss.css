@@ -1,20 +1,49 @@
 .card {
-    background-color: grey;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* fixes offset to truly be center*/
-    width: 400px;
-    height: 500px; 
-    border-radius: 60px;
-    border: 2px solid;
-    padding: 10px;
-    border-color: green;
-    border-width: medium;
-    display: inline-flex; /*make us of Flexbox*/
-    justify-content: center;
-    align-items: center; /*does vertically center the desired content*/
-    justify-content: center; /*horizontally centers single line items*/
-    text-align: center; /*optional, but helps horizontally
-                         center text that breaks into multiple lines*/
-  }  
+  background-color: lightgray;
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  transform: translate(-50%, -55%); /* fixes offset to truly be center*/
+  width: 300px;
+  height: 500px;
+  border-radius: 60px;
+  border: 2px solid;
+  padding: 10px;
+  border-color: green;
+  border-width: medium;
+  display: inline-flex; /*make us of Flexbox*/
+  justify-content: center;
+  align-items: center; /*does vertically center the desired content*/
+  justify-content: center; /*horizontally centers single line items*/
+  text-align: center; /*optional, but helps horizontally
+            s             center text that breaks into multiple lines*/
+}
+
+.image {
+  content: url(
+    https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F141104161136-marnie-the-dog-image-for-story-3-story-top.png
+  );
+  left: 0%;
+  top: 0%;
+  transform: translate(0%, -60%);
+  max-width: 100%;
+  max-height: 120%;
+  overflow: hidden;
+  display: block;
+}
+
+#leftarrow {
+  width: 48px;
+  height: 500px;
+  margin-top: 5%;
+  margin-left: 35%;
+  float:left;
+}
+
+#rightarrow {
+  width: 48px;
+  height: 500px;
+  margin-top: 5%;
+  margin-right: 35%;
+  float:right;
+}

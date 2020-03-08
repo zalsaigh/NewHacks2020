@@ -19,8 +19,15 @@ request(options, function (error, response) {
   return result;
 });
 
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
 
-await new Promise(r => setTimeout(r, 30000));
+sleep(30000);
 
 var request = require('request');
 
