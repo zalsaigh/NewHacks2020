@@ -10,72 +10,71 @@
 	</header>
 	<br><br><br>
 	<div class="filter">
-		<form class="filter" action ="script.js">
-			<label for="year"> Year:</label>
+		<form class="filter" id="filterForm" action ="script.js">
+			<label for="year"> <b>Year:</b></label>
 			<input type="text" id="year" name="year"><br><br>
-			Make: <select id="makes">
-				<option>Any Make</option>
-				<optgroup>
-					<option value="Acura">Acura</option>
-					<option value="Audi">Audi</option>
-					<option value="BMW">BMW</option>
-					<option value="Buick">Buick</option>
-					<option value="Cadillac">Cadillac</option>
-					<option value="Chevrolet">Chevrolet</option>
-					<option value="Chrysler">Chrysler</option>
-					<option value="Dodge">Dodge</option>
-					<option value="Ram">Ram</option>
-					<option value="Ferrari">Ferrari</option>
-					<option value="Ford">Ford</option>
-					<option value="GMC">GMC</option>
-					<option value="Honda">Honda</option>
-					<option value="Hyundai">Hyundai</option>
-					<option value="Infiniti">Infiniti</option>
-					<option value="Jaguar">Jaguar</option>
-					<option value="Jeep">Jeep</option>
-					<option value="Kia">Kia</option>
-					<option value="Lamborghini">Lamborghini</option>
-					<option value="Land Rover">Land Rover</option>
-					<option value="Lexus">Lexus</option>
-					<option value="Lincoln">Lincoln</option>
-					<option value="Maserati">Maserati</option>
-					<option value="Mazda">Mazda</option>
-					<option value="Mercedes-AMG">Mercedes-AMG</option>
-					<option value="Mercedes-Benz">Mercedes-Benz</option>
-					<option value="MINI">MINI</option>
-					<option value="Mitsubishi">Mitsubishi</option>
-					<option value="Nissan">Nissan</option>
-					<option value="Porsche">Porsche</option>
-					<option value="Ram">Ram</option>
-					<option value="Subaru">Subaru</option>
-					<option value="Tesla">Tesla</option>
-					<option value="Toyota">Toyota</option>
-					<option value="Volkswagen">Volkswagen</option>
-					<option value="Volvo">Volvo</option></optgroup>
-			</select><br><br>
-			<label for="mileage"> Mileage Limit:</label>
+			<label for="make"> <b>Make:</b></label>
+			<input type="text" id="make" name="make"><br><br>
+			<label for="mileage"> <b>Mileage Limit:</b></label>
 			<input type="text" id="mileage" name="mileage"><br><br>
-			<label for="price"> Price Limit:</label>
+			<label for="price"> <b>Price Limit:</b></label>
 			<input type="text" id="price" name="price"><br><br><br>
-			<button type="button" onclick="getInputValue();">Find Car</button>
+			<button type="submit">Find Car</button>
+		</form>
 
 			<script>
-			var year;
-			var make;
-			var mil;
-			var prc;
-		 	async function getInputValue(){
-            // Selecting the input element and get its value 
-            year = document.getElementById("year").value;
-            make = document.getElementById("makes").value;
-            mil = document.getElementById("mileage").value;
-            prc = document.getElementById("price").value;
+			var endText = " "
+			const myForm = document.getElementById('filterForm');
+			myForm.addEventListener('submit', async function(e) {
+				e.preventDefault();
+				const formData = new FormData(this); //this refers to the form above
+				const searchParams = new URLSearchParams();
 
-			var myHeaders = new Headers();
-			myHeaders.append("User-Agent", "PostmanRuntime/7.22.0");
-			myHeaders.append("Accept", "*/*");
-			myHeaders.append("Cache-Control", "no-cache");
-			myHeaders.append("Postman-Token", "55421f47-e803-4e6a-85f3-abf410923ae1");
+				
+				for (const pair of formData) {
+					searchParams.append(pair[0], pair[1]);
+				}
+
+				var bodyStuff = new FormData();
+				bodyStuff.append("api_key", "tQY-a5ytQULq");
+				bodyStuff.append("start_url", "https://www.kijijiautos.ca/");
+				bodyStuff.append("send_email", "1");
+
+				var requestOptions = {
+										method: 'POST',
+										body: bodyStuff,
+										redirect: 'follow'
+										};
+
+				fetch("https://www.parsehub.com/api/v2/projects/ttPuhXkthMpz/run", requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					let obj = JSON.parse(result)
+					endText = JSON.stringify(obj.run_token);
+					console.log(endText)
+				})
+				.catch(error => console.log('error', error));
+
+				await new Promise(r => setTimeout(r, 60000));
+				
+				console.log(endText)
+				fetch("https://www.parsehub.com/api/v2/runs/" + endText.substring(1, 13) +  "/data?api_key=tQY-a5ytQULq")
+				.then(function (response) {
+				return response.text();
+				}).then(function (text) {
+				console.log(text);
+				}).catch(function (error) {
+				console.error(error);
+				})
+			})
+
+
+
+			/*var myHeaders = new Headers();
+			myHeaders.append("User-Agent", "PostmanRuntime/7.22.0"); */
+			//myHeaders.append("Accept", "*/*");
+			//myHeaders.append("Cache-Control", "no-cache");
+			/* myHeaders.append("Postman-Token", "55421f47-e803-4e6a-85f3-abf410923ae1");
 			myHeaders.append("Host", "www.parsehub.com");
 			myHeaders.append("Content-Type", "multipart/form-data; boundary=--------------------------180401260797681213179167");
 			myHeaders.append("Accept-Encoding", "gzip, deflate, br");
@@ -86,7 +85,7 @@
 			formdata.append("api_key", "tQY-a5ytQULq");
 			formdata.append("start_url", "https://www.kijijiautos.ca/");
 			formdata.append("send_email", "1");
-			formdata.append("start_value_override", "{\"data\":[\n{\"make\": \"Toyota\", \n\"model\":\"RAV4\", \n\"year\":\"2015\",\n\"mileage\":\"10000\",\n\"price\":\"30000\"}]\n}");
+			formdata.append("start_value_override", "{\"data\":[\n{\"make\": \"" + make + "\", \n\"model\":\"\", \n\"year\":\"" + year + "\",\n\"mileage\":\"" + mil + "\",\n\"price\":\"" + prc + "\"}]\n}");
 
 			var requestOptions = {
 			method: 'POST',
@@ -103,7 +102,7 @@
 			
 		}
 			
-			//await new Promise(r => setTimeout(r, 30000));
+			//
 
 			var requestOptions = {
   				method: 'GET',
@@ -111,10 +110,10 @@
   				redirect: 'follow'
 			};
 
-			fetch("https://www.parsehub.com/api/v2/runs/ts0L8TAMfTZQ/data?api_key=tQY-a5ytQULq", requestOptions)
+			fetch("https://www.parsehub.com/api/v2/runs/" + getInputValue()["run_key"] + "/data?api_key=tQY-a5ytQULq", requestOptions)
   			.then(response => response.text())
   			.then(result => console.log(result))
-  			.catch(error => console.log('error', error));
+  			.catch(error => console.log('error', error)); */
 			</script>
 
 		</form>	
