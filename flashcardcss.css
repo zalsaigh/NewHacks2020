@@ -1,0 +1,20 @@
+.card {
+    background-color: grey;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* fixes offset to truly be center*/
+    width: 400px;
+    height: 500px; 
+    border-radius: 60px;
+    border: 2px solid;
+    padding: 10px;
+    border-color: green;
+    border-width: medium;
+    display: inline-flex; /*make us of Flexbox*/
+    justify-content: center;
+    align-items: center; /*does vertically center the desired content*/
+    justify-content: center; /*horizontally centers single line items*/
+    text-align: center; /*optional, but helps horizontally
+                         center text that breaks into multiple lines*/
+  }  

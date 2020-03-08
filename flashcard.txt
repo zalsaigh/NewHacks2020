@@ -1,0 +1,4 @@
+<html>
+<div class="boxed">
+  This text is enclosed in a box.
+</div>
