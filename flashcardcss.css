@@ -1,5 +1,5 @@
 .card {
-  background-color: lightgray;
+  background-color: #EDEDED;
   left: 50%;
   top: 50%;
   position: fixed;
@@ -9,7 +9,7 @@
   border-radius: 60px;
   border: 2px solid;
   padding: 10px;
-  border-color: green;
+  border-color: #000000;
   border-width: medium;
   display: inline-flex; /*make us of Flexbox*/
   justify-content: center;
