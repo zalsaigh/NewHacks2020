@@ -64,7 +64,7 @@
 			var make;
 			var mil;
 			var prc;
-		 	function getInputValue(){
+		 	async function getInputValue(){
             // Selecting the input element and get its value 
             year = document.getElementById("year").value;
             make = document.getElementById("makes").value;
@@ -96,39 +96,25 @@
 			redirect: 'follow'
 			};
 
-			fetch("https://www.parsehub.com/api/v2/projects/ttPuhXkthMpz/run", requestOptions)
+			await fetch("https://www.parsehub.com/api/v2/projects/ttPuhXkthMpz/run", requestOptions)
 			.then(response => response.text())
 			.then(result => console.log(result))
 			.catch(error => console.log('error', error));
+			
+		}
+			
+			//await new Promise(r => setTimeout(r, 30000));
 
-			 }
-			 /*
-			let result = request.json();
-			console.log(result);
-			request(options, function (error, response) { 
-			  if (error) throw new Error(error);
-			  console.log(response.body);
-			  var result = JSON.stringify(response.body["run_token"]);
-			  return result;
-			});
-			}
+			var requestOptions = {
+  				method: 'GET',
+  				mode: 'no-cors',
+  				redirect: 'follow'
+			};
 
-/*
-			await new Promise(r => setTimeout(r, 30000));
-
-			var request = require('request');
-
-			request({
-			  uri: 'https://www.parsehub.com/api/v2/projects/'+ret+'/last_ready_run/data',
-			  method: 'GET',
-			  gzip: true,
-			  qs: {
-			    api_key: "tQY-a5ytQULq",
-			    format: "json"
-			  }
-			}, function(err, resp, body) {
-			  console.log(body);
-			}); */
+			fetch("https://www.parsehub.com/api/v2/runs/ts0L8TAMfTZQ/data?api_key=tQY-a5ytQULq", requestOptions)
+  			.then(response => response.text())
+  			.then(result => console.log(result))
+  			.catch(error => console.log('error', error));
 			</script>
 
 		</form>	
