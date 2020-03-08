@@ -38,5 +38,5 @@ request({
     format: "json"
   }
 }, function(err, resp, body) {
-  console.log(body);
+  var datatext = body;
 });

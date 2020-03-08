@@ -3,6 +3,8 @@
 <head>
 	<title>Vroom! You've Got a Match</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="flashcard.js" type="text/javascrips"></script>
+	<script src = "filewriter.js"></script>
 </head>
 <body>
 	<header>
@@ -39,6 +41,7 @@
 				bodyStuff.append("api_key", "tQY-a5ytQULq");
 				bodyStuff.append("start_url", "https://www.kijijiautos.ca/");
 				bodyStuff.append("send_email", "1");
+				bodyStuff.append("start_value_override","{\"data\":[{\"make\":\"" + searchParams.getAll("make")[0] + "\",\"model\":\" \",\"year\":\"" + searchParams.getAll("year")[0] + "\",\"mileage\":\"" + searchParams.getAll("mileage")[0] + "\",\"price\":\"" + searchParams.getAll("price")[0] + "\"}]}")
 
 				var requestOptions = {
 										method: 'POST',
@@ -62,7 +65,11 @@
 				.then(function (response) {
 				return response.text();
 				}).then(function (text) {
-				console.log(text);
+					download(text, "results.txt", "plain/text");
+					console.log(text);
+					var datatext = text;
+					window.location.href="flashcard.html";
+					//nae(datatext);
 				}).catch(function (error) {
 				console.error(error);
 				})
