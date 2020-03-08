@@ -1,0 +1,104 @@
+.card {
+  background-color: #EDEDED;
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  transform: translate(-50%, -55%); /* fixes offset to truly be center*/
+  width: 300px;
+  height: 500px;
+  border-radius: 60px;
+  border: 2px solid;
+  padding: 10px;
+  border-color: #000000;
+  border-width: medium;
+  display: inline-flex; /*make us of Flexbox*/
+  justify-content: center;
+  align-items: center; /*does vertically center the desired content*/
+  justify-content: center; /*horizontally centers single line items*/
+  text-align: center; /*optional, but helps horizontally
+            s             center text that breaks into multiple lines*/
+}
+
+.image {
+  content: url(
+    https://images-ext-2.discordapp.net/external/n19nkKSB_aVDznY0edHDMjtxZcwpz8pueiHf6txV3F4/https/i.ebayimg.com/images/g/w9UAAOSwlyJeZClC/s-l300.jpg
+  );
+  position: relative;
+  left: 60%;
+  top: -10%;
+  transform: translate(-50%, -50%);
+  max-width: 200px;
+  max-height: 150px;
+  display: block;
+}
+
+#leftarrow {
+  width: 48px;
+  height: 500px;
+  margin-top: 5%;
+  margin-left: 30%;
+  float:left;
+}
+
+#rightarrow {
+  width: 48px;
+  height: 500px;
+  margin-top: 5%;
+  margin-right: 30%;
+  float:right;
+}
+
+#SparkPlug {
+    position: relative;
+    left: 75%;
+    top: -45%;
+    width: 100px;
+    height: 20px;
+}
+
+#name {
+    position:relative;
+    width: 250px;
+    height: 40px;
+    top: 95px;
+    left: -150px;
+    text-align: left;
+}
+
+#price {
+    position:relative;
+    width: 250px;
+    height: 40px;
+    top: 85px;
+    left: -150px;
+    text-align: left;
+}
+
+#mileage {
+    position:relative;
+    width: 250px;
+    height: 40px;
+    top: 85px;
+    left: -150px;
+    text-align: left;
+}
+
+#loc {
+    position:relative;
+    width: 250px;
+    height: 40px;
+    top: 85px;
+    left: -150px;
+    text-align: left;
+}
+
+#bottom_line {
+    color: grey;
+    position:relative;
+    width: 250px;
+    height: 40px;
+    top: 140px;
+    left: -150px;
+    text-align: center;
+}
+
