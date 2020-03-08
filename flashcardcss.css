@@ -28,7 +28,7 @@
   top: -10%;
   transform: translate(-50%, -50%);
   max-width: 200px;
-  height: 150px;
+  max-height: 150px;
   display: block;
 }
 
@@ -36,7 +36,7 @@
   width: 48px;
   height: 500px;
   margin-top: 5%;
-  margin-left: 35%;
+  margin-left: 30%;
   float:left;
 }
 
@@ -44,7 +44,7 @@
   width: 48px;
   height: 500px;
   margin-top: 5%;
-  margin-right: 35%;
+  margin-right: 30%;
   float:right;
 }
 
@@ -60,7 +60,7 @@
     position:relative;
     width: 250px;
     height: 40px;
-    top: 75px;
+    top: 95px;
     left: -150px;
     text-align: left;
 }
@@ -69,7 +69,7 @@
     position:relative;
     width: 250px;
     height: 40px;
-    top: 75px;
+    top: 85px;
     left: -150px;
     text-align: left;
 }
@@ -78,7 +78,7 @@
     position:relative;
     width: 250px;
     height: 40px;
-    top: 75px;
+    top: 85px;
     left: -150px;
     text-align: left;
 }
@@ -87,9 +87,18 @@
     position:relative;
     width: 250px;
     height: 40px;
-    top: 75px;
+    top: 85px;
     left: -150px;
     text-align: left;
+}
 
+#bottom_line {
+    color: grey;
+    position:relative;
+    width: 250px;
+    height: 40px;
+    top: 140px;
+    left: -150px;
+    text-align: center;
 }
 
